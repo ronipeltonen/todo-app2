@@ -15,6 +15,7 @@ class Tehtava(models.Model):
         null=True,
         blank=True,
     )
+    tehty = models.BooleanField(default=False)
 
     # on_delete-säännöt
     #
