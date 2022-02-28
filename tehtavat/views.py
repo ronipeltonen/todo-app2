@@ -1,4 +1,8 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import (
+    HttpResponse,
+    HttpResponseBadRequest,
+    HttpResponseNotFound,
+)
 from django.shortcuts import render
 
 from .models import Tehtava
@@ -17,6 +21,15 @@ def tehtava_sivu(request, id):
         tehtava = Tehtava.objects.get(id=id)
     except Tehtava.DoesNotExist:
         return HttpResponseNotFound(f"Tehtävää {id} ei löydy.")
+
+    if request.method == "POST":
+        toiminto = request.POST.get("toiminto")
+        if toiminto == "merkitse_tehdyksi":
+            tehtava.tehty = True
+            tehtava.save()
+        else:
+            return HttpResponseBadRequest("Tuntematon toiminto")
+
     return render(request, "tehtava.html", context={"tehtava": tehtava})
 
 

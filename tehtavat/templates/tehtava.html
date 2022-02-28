@@ -4,6 +4,22 @@
     </head>
     <body>
         <h1>{{tehtava}}</h1>
+
+        <p>
+            {% if tehtava.tehty %}
+                <b>TEHTY!</b>
+            {% else %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <input type="submit"
+                    value="Merkitse tehdyksi"/>
+                    <input type="hidden"
+                    name="toiminto"
+                    value="merkitse_tehdyksi"/>
+                </form>
+            {% endif %}
+        </p>
+
         <p>
             Kategoria:
             {% if tehtava.kategoria %}
