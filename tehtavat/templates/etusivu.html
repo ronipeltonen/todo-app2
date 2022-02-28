@@ -5,5 +5,16 @@
     <body>
         <h1>Todo-listaus</h1>
         <a href="{% url 'tietoa' %}">Tietoa ohjelmasta</a>
+
+        <ul>
+            {% for tehtava in tehtavat %}
+                <li>
+                    {{tehtava}}
+                    {% if tehtava.kategoria %}
+                        (Kategoria: {{tehtava.kategoria}})
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
     </body>
 </html>
