@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 from .models import Tehtava
@@ -10,6 +10,15 @@ def etusivu(request):
     }
     response = render(request, "etusivu.html", context=tiedot)
     return response
+
+
+def tehtava_sivu(request, id):
+    try:
+        tehtava = Tehtava.objects.get(id=id)
+    except Tehtava.DoesNotExist:
+        return HttpResponseNotFound(f"Tehtävää {id} ei löydy.")
+    return render(request, "tehtava.html", context={"tehtava": tehtava})
+
 
 def tietoa(request):
     response = render(request, "tietoa.html")

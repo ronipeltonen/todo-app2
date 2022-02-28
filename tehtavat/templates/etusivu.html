@@ -9,10 +9,12 @@
         <ul>
             {% for tehtava in tehtavat %}
                 <li>
-                    {{tehtava}}
-                    {% if tehtava.kategoria %}
-                        (Kategoria: {{tehtava.kategoria}})
-                    {% endif %}
+                    <a href="{% url 'tehtava' tehtava.id %}">
+                        {{tehtava}}
+                        {% if tehtava.kategoria %}
+                            (Kategoria: {{tehtava.kategoria}})
+                        {% endif %}
+                    </a>
                 </li>
             {% endfor %}
         </ul>

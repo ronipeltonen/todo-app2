@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Tehtävä: {{tehtava}}</title>
+    </head>
+    <body>
+        <h1>{{tehtava}}</h1>
+        <p>
+            Kategoria:
+            {% if tehtava.kategoria %}
+                {{tehtava.kategoria}}
+            {% else %}
+                &ndash;
+            {% endif %}
+        </p>
+        <p>
+            <a href="{% url 'etusivu' %}">Etusivu</a>
+        </p>
+    </body>
+</html>
