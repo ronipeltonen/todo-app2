@@ -13,6 +13,7 @@ class Tehtava(models.Model):
         Kategoria,
         on_delete=models.RESTRICT,
         null=True,
+        blank=True,
     )
 
     # on_delete-säännöt
