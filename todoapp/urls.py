@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from tehtavat.views import etusivu, tietoa, yhteystiedot
+
+
 urlpatterns = [
+    path('', etusivu, name="etusivu"),
+    path('tietoa-ohjelmasta/', tietoa, name="tietoa"),
+    path('yhteystiedot/', yhteystiedot),
     path('admin/', admin.site.urls),
 ]
