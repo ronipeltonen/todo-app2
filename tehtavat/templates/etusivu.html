@@ -1,22 +1,22 @@
-<html>
-    <head>
-        <title>Todo-ohjelma -- Etusivu</title>
-    </head>
-    <body>
-        <h1>Todo-listaus</h1>
-        <a href="{% url 'tietoa' %}">Tietoa ohjelmasta</a>
+{% extends "base.html" %}
 
-        <ul>
-            {% for tehtava in tehtavat %}
-                <li>
-                    <a href="{% url 'tehtava' tehtava.id %}">
-                        {{tehtava}}
-                        {% if tehtava.kategoria %}
-                            (Kategoria: {{tehtava.kategoria}})
-                        {% endif %}
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block title %}Etusivu{% endblock %}
+
+{% block heading %}Todo-listaus{% endblock %}
+
+{% block content %}
+<a href="{% url 'tietoa' %}">Tietoa ohjelmasta</a>
+
+<ul>
+    {% for tehtava in tehtavat %}
+        <li>
+            <a href="{% url 'tehtava' tehtava.id %}">
+                {{tehtava}}
+                {% if tehtava.kategoria %}
+                    (Kategoria: {{tehtava.kategoria}})
+                {% endif %}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
