@@ -1,10 +1,7 @@
-<html>
-    <head>
-        <title>Tehtävä: {{tehtava}}</title>
-    </head>
-    <body>
-        <h1>{{tehtava}}</h1>
-
+{% extends "base.html" %}
+{% block title %}Tehtävä: {{tehtava}}{% endblock %}
+{% block heading %}{{tehtava}}{% endblock %}
+{% block content %}
         <p>
             {% if tehtava.tehty %}
                 <b>TEHTY!</b>
@@ -31,5 +28,4 @@
         <p>
             <a href="{% url 'etusivu' %}">Etusivu</a>
         </p>
-    </body>
-</html>
+{% endblock %}
