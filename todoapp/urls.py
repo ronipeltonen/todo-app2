@@ -14,10 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from rest_framework import routers
 
+from tehtavat.api import TehtavaViewSet
 from tehtavat.views import etusivu, tehtava_sivu, tietoa, yhteystiedot
 
+router = routers.DefaultRouter()
+router.register(r'tehtavat', TehtavaViewSet)
 
 urlpatterns = [
     path('', etusivu, name="etusivu"),
@@ -25,4 +29,6 @@ urlpatterns = [
     path('tietoa-ohjelmasta/', tietoa, name="tietoa"),
     path('yhteystiedot/', yhteystiedot),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls')),
 ]
