@@ -1,5 +1,4 @@
 """todoapp URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
 Examples:
@@ -25,6 +24,8 @@ router.register(r'tehtavat', TehtavaViewSet)
 
 urlpatterns = [
     path('', etusivu, name="etusivu"),
+    path('auth/', include('djoser.urls')),
+    path('auth/', include('djoser.urls.authtoken')),
     path('tehtava/<int:id>/', tehtava_sivu, name="tehtava"),
     path('tietoa-ohjelmasta/', tietoa, name="tietoa"),
     path('yhteystiedot/', yhteystiedot),
